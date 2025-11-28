@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>dnvsraj@rediffmail.com</username>
-      <password>cmVmdGtuOjAxOjE3ODY1MDA4MDQ6MVRoeWFvM2V2b040MEgycVg3YkJzb3lUNlNl</password>
+      <username>jayant.parmar@zohomail.in</username>
+      <password>cmVmdGtuOjAxOjE3OTU4NjI2NzY6YllqN1FNTTgzYlU4ODNiZ0RQWG43S1haZDlT</password>
       <id>central</id>
     </server>
     <server>
-      <username>dnvsraj@rediffmail.com</username>
-      <password>cmVmdGtuOjAxOjE3ODY1MDA4MDQ6MVRoeWFvM2V2b040MEgycVg3YkJzb3lUNlNl</password>
+      <username>jayant.parmar@zohomail.in</username>
+      <password>cmVmdGtuOjAxOjE3OTU4NjI2NzY6YllqN1FNTTgzYlU4ODNiZ0RQWG43S1haZDlT</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -21,14 +21,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>test-libs-release</name>
-          <url>https://devopsdemotrial.jfrog.io/artifactory/test-libs-release</url>
+          <name>test1-libs-release</name>
+          <url>https://trialn3fyta.jfrog.io/artifactory/test1-libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
-          <name>test-libs-snapshot</name>
-          <url>https://devopsdemotrial.jfrog.io/artifactory/test-libs-snapshot</url>
+          <name>test1-libs-snapshot</name>
+          <url>https://trialn3fyta.jfrog.io/artifactory/test1-libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -37,14 +37,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>test-libs-release</name>
-          <url>https://devopsdemotrial.jfrog.io/artifactory/test-libs-release</url>
+          <name>test1-libs-release</name>
+          <url>https://trialn3fyta.jfrog.io/artifactory/test1-libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
-          <name>test-libs-snapshot</name>
-          <url>https://devopsdemotrial.jfrog.io/artifactory/test-libs-snapshot</url>
+          <name>test1-libs-snapshot</name>
+          <url>https://trialn3fyta.jfrog.io/artifactory/test1-libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>
