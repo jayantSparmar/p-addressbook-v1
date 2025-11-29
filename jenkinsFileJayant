@@ -8,6 +8,7 @@ pipeline {
     stages {
         
         stage('compile') {
+            agent any
             steps {
                 echo 'compile the code'
                 sh "mvn compile"
@@ -15,6 +16,7 @@ pipeline {
         }
 
         stage('codeReview') {
+            agent any
             steps {
                 echo 'Reviewing the code for best practise'
                 sh "mvn pmd:pmd"
@@ -22,6 +24,7 @@ pipeline {
         }
 
         stage('test') {
+            agent any
             steps {
                 echo 'Unit testing of the application'
                 sh "mvn test"
@@ -29,6 +32,7 @@ pipeline {
         }
 
         stage('coverageAnalysis') {
+            agent any
             steps {
                 echo 'coverage analysis of the test'
                 sh "mvn verify"
@@ -36,6 +40,7 @@ pipeline {
         }
 
         stage('package') {
+            agent {label 'linux_slave'}
             steps {
                 echo 'packaging the code'
                 sh "mvn package"
@@ -43,6 +48,7 @@ pipeline {
         }
 
         stage('publish') {
+            agent any
             steps {
                 echo 'publishing the artifacts to jfrog'
                 sh "mvn -U deploy -s settings.xml"
