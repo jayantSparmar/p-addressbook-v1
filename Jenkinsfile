@@ -15,6 +15,10 @@ pipeline {
 
     }
 
+    environment{
+             BUILD_SERVER = ec2-user@172.31.7.98
+    }  
+
     stages {
         
         stage('compile') {
@@ -53,7 +57,7 @@ pipeline {
         }
 
         stage('coverageAnalysis') {
-            agent any
+           agent {label 'linux_slave'}
             steps {
                 echo 'coverage analysis of the test'
                 sh "mvn verify"
@@ -61,8 +65,15 @@ pipeline {
         }
 
         stage('package') {
-            agent {label 'linux_slave'}
+            agent any
             steps {
+                script {
+            sshagent (['slave2']) {
+                echo "Packaging the code ${params.APPVERSION}"          
+                sh "scp -o StrictHostKeyChecking=no server-script.sh ec2-user@${BUILD_SERVER}:/home/ec2-user/"
+                sh "sh -o StrictHostKeyChecking=no ec2-user@${BUILD_SERVER} bash ~/server-script.sh"
+            }
+        }
                 echo 'packaging the code'
                 sh "mvn package"
             }
