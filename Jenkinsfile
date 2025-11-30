@@ -44,6 +44,12 @@ pipeline {
                 echo 'Unit testing of the application'
                 sh "mvn test"
             }
+         post{
+            always{
+                junit 'target/surefire-reports/*.xml'
+            }
+         }
+        
         }
 
         stage('coverageAnalysis') {
@@ -64,8 +70,12 @@ pipeline {
 
         stage('publish') {
             agent any
+            input{
+                message "Do you want to publish the artifacts to jfrog?"
+                ok "Yes, publish"
+            }
             steps {
-                ech "publishing artifacts to jfrog ${param.APPVERSION}"
+                ech "publishing artifacts to jfrog ${params.APPVERSION}"
                 sh "mvn -U deploy -s settings.xml"
             }
         }
