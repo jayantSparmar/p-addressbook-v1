@@ -5,12 +5,22 @@ pipeline {
         maven 'mymaven'
     }
 
+       parameters {
+
+        string(name: 'ENV', defaultValue: 'TEst', description: 'Version to deploy ')
+
+        booleanParam(name: 'excuteTests', defaultValue: true, description: 'Decide to run test cases')
+
+        choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'], description: 'Select application server')
+
+    }
+
     stages {
         
         stage('compile') {
             agent any
             steps {
-                echo 'compile the code'
+                echo "compile the code ${params.ENV}"
                 sh "mvn compile"
             }
         }
@@ -25,6 +35,10 @@ pipeline {
 
         stage('test') {
             agent any
+
+            when{
+                expression {${pararm.excuteTests}}
+            }
             steps {
                 echo 'Unit testing of the application'
                 sh "mvn test"
@@ -50,7 +64,7 @@ pipeline {
         stage('publish') {
             agent any
             steps {
-                echo 'publishing the artifacts to jfrog'
+                ech "publishing artifacts to jfrog ${param.APPVERSION}"
                 sh "mvn -U deploy -s settings.xml"
             }
         }
