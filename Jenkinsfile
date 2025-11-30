@@ -75,7 +75,7 @@ pipeline {
                 ok "Yes, publish"
             }
             steps {
-                ech "publishing artifacts to jfrog ${params.APPVERSION}"
+                echo "publishing artifacts to jfrog ${params.APPVERSION}"
                 sh "mvn -U deploy -s settings.xml"
             }
         }
