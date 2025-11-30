@@ -37,7 +37,7 @@ pipeline {
             agent any
 
             when{
-                expression {${pararm.excuteTests}}
+                expression {pararm.excuteTests == true}
             }
             steps {
                 echo 'Unit testing of the application'
