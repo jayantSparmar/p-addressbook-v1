@@ -71,7 +71,7 @@ pipeline {
             sshagent (['slave2']) {
                 echo "Packaging the code ${params.APPVERSION}"          
                 sh "scp -o StrictHostKeyChecking=no my-server-script.sh ec2-user@${BUILD_SERVER}:/home/ec2-user/"
-                sh "sh -o StrictHostKeyChecking=no ec2-user@${BUILD_SERVER} bash ~/my-server-script.sh"
+                sh "sh -o StrictHostKeyChecking=no ec2-user@${BUILD_SERVER} 'bash ~/my-server-script.sh'"
             }
         }
                 echo 'packaging the code'
