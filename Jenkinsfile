@@ -7,7 +7,7 @@ pipeline {
 
        parameters {
 
-        string(name: 'ENV', defaultValue: 'TEst', description: 'Version to deploy ')
+        string(name: 'ENV', defaultValue: 'Test', description: 'Version to deploy ')
 
         booleanParam(name: 'excuteTests', defaultValue: true, description: 'Decide to run test cases')
 
