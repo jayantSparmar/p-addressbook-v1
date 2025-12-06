@@ -59,7 +59,7 @@ pipeline {
         }
 
         stage('coverageAnalysis') {
-           agent {label 'linux_slave'}
+           agent any
             steps {
                 echo 'coverage analysis of the test'
                 sh "mvn verify"
