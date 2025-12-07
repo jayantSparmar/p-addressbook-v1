@@ -89,10 +89,10 @@ pipeline {
                 script{
                 sshagent(['slave2']) {
                 echo 'Packaging the code'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'password', usernameVariable: 'devopsjayant')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                 sh "scp -o StrictHostKeyChecking=no my-server-script.sh ${BUILD_SERVER}:/home/ec2-user/"
                 sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} bash /home/ec2-user/my-server-script.sh ${IMAGE_NAME}"
-                sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} sudo docker login -u ${devopsjayant} -p ${password}"
+                sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} sudo docker push ${IMAGE_NAME}"
             
                     }
@@ -107,12 +107,12 @@ pipeline {
                 script{
                 sshagent(['slave2']) {
                 echo 'Packaging the code'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'password', usernameVariable: 'devopsjayant')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Devopsjayant', usernameVariable: 'jayant027')]) {
                 //sh "scp -o StrictHostKeyChecking=no server-script.sh ${BUILD_SERVER}:/home/ec2-user/"
                 //sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} bash /home/ec2-user/server-script.sh ${IMAGE_NAME}"
                 sh "ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} sudo yum install docker -y"
                 sh "ssh  ${DEPLOY_SERVER} sudo service docker start"
-                sh "ssh  ${DEPLOY_SERVER} sudo docker login -u ${devopsjayant} -p ${password}"
+                sh "ssh  ${DEPLOY_SERVER} sudo docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
                 sh "ssh  ${DEPLOY_SERVER} sudo docker run -itd -P ${IMAGE_NAME}"
                     }
                 }
