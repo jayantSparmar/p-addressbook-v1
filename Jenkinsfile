@@ -18,7 +18,7 @@ pipeline {
     environment{
              BUILD_SERVER = 'ec2-user@172.31.14.254' 
              DEPLOY_SERVER = 'ec2-user@172.31.11.27' 
-             IMAGE_NAME = "devopsjayantSingh/addbook:${BUILD_NUMBER}"
+             IMAGE_NAME = "jayant027/addbook:${BUILD_NUMBER}"
 
     }  
 
