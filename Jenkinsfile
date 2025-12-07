@@ -107,7 +107,7 @@ pipeline {
                 script{
                 sshagent(['slave2']) {
                 echo 'Packaging the code'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Devopsjayant', usernameVariable: 'jayant027')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]) {
                 //sh "scp -o StrictHostKeyChecking=no server-script.sh ${BUILD_SERVER}:/home/ec2-user/"
                 //sh "ssh -o StrictHostKeyChecking=no ${BUILD_SERVER} bash /home/ec2-user/server-script.sh ${IMAGE_NAME}"
                 sh "ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} sudo yum install docker -y"
